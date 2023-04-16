@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.accountManage.mapper.UserInfoMapper">
+
+    <resultMap id="UserInfoResultMap" type="com.example.accountManage.po.UserInfoPO">
+        <id property="id" column="id" />
+        <result property="userName" column="user_name"/>
+        <result property="userPassword" column="user_password"/>
+        <result property="uuid" column="uuid"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+    
+    <insert id="insertUserInfo" parameterType="com.example.accountManage.po.UserInfoPO" useGeneratedKeys="true" keyProperty="id">
+        insert into user_info (user_name, user_password, uuid, user_id, user_state)
+        values(#{userName}, #{userPassword}, #{uuid}, #{userId}, #{userState})
+    </insert>
+
+    <select id="getMaxId" resultType="int">
+        SELECT IFNULL(MAX(id), 0) FROM user_info
+    </select>
+
+    <select id="queryUserInfo" resultMap="UserInfoResultMap">
+        SELECT * FROM user_info
+        WHERE user_id= #{userId}
+    </select>
+
+    <update id="updateUserState" statementType="PREPARED" useGeneratedKeys="false">
+        UPDATE user_info
+        SET user_state = #{state}
+        WHERE user_id = #{userId}
+    </update>
+
+</mapper>

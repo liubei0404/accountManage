@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.accountManage.mapper.ConferenceInfoMapper">
+
+    <resultMap id="ConferenceInfoResultMap" type="com.example.accountManage.po.ConferenceInfoPO">
+        <id property="id" column="id" />
+        <result property="userId" column="user_id" />
+        <result property="userName" column="user_name" />
+        <result property="roomId" column="room_id"/>
+        <result property="isCompere" column="is_compere"/>
+        <result property="isMeeting" column="is_meeting"/>
+        <result property="uuid" column="uuid"/>
+    </resultMap>
+
+    <insert id="insertConferenceInfo" parameterType="com.example.accountManage.po.ConferenceInfoPO" useGeneratedKeys="true" keyProperty="id">
+        insert into user_info (user_id, user_name, room_id, is_compere, is_meeting, uuid)
+        values(#{userId}, #{userName}, #{roomId}, #{isCompere}, #{isMeeting}, #{uuid})
+    </insert>
+
+</mapper>
