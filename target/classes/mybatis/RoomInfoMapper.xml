@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.accountManage.mapper.RoomInfoMapper">
+
+    <resultMap id="RoomInfoResultMap" type="com.example.accountManage.po.RoomInfoPO">
+        <id property="id" column="id" />
+        <result property="roomId" column="room_id"/>
+        <result property="roomPassword" column="room_password"/>
+        <result property="uuid" column="uuid"/>
+        <result property="compere" column="compere_userId"/>
+        <result property="attendee" column="attendee" />
+    </resultMap>
+
+    <insert id="insertRoomInfo" parameterType="com.example.accountManage.po.RoomInfoPO" useGeneratedKeys="true" keyProperty="id">
+        insert into user_info (room_id, room_password, uuid, compere_userId, attendee)
+        values(#{roomId}, #{roomPassword}, #{uuid}, #{compere}, #{attendee})
+    </insert>
+
+</mapper>

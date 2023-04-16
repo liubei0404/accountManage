@@ -1,0 +1,6 @@
+com\example\accountmanage\mapper\UserInfoMapper.class
+com\example\accountmanage\service\UserInfoService.class
+com\example\accountmanage\controller\UsreInfoController.class
+com\example\accountmanage\AccountManageApplication.class
+com\example\accountmanage\po\UserInfoPO.class
+com\example\accountmanage\service\impl\UserInfoServiceImpl.class
